@@ -1,0 +1,11 @@
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\bin\Debug\netcoreapp2.0\SaltyShared.deps.json
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\bin\Debug\netcoreapp2.0\SaltyShared.runtimeconfig.json
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\bin\Debug\netcoreapp2.0\SaltyShared.runtimeconfig.dev.json
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\bin\Debug\netcoreapp2.0\SaltyShared.dll
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\bin\Debug\netcoreapp2.0\SaltyShared.pdb
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\obj\Debug\netcoreapp2.0\SaltyShared.AssemblyInfoInputs.cache
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\obj\Debug\netcoreapp2.0\SaltyShared.AssemblyInfo.cs
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\obj\Debug\netcoreapp2.0\SaltyShared.csproj.CoreCompileInputs.cache
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\obj\Debug\netcoreapp2.0\SaltyShared.dll
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\obj\Debug\netcoreapp2.0\SaltyShared.pdb
+C:\Users\Marcus\Desktop\Gitlab\alternate-world\SaltyChat\source\SaltyShared\obj\Debug\netcoreapp2.0\SaltyShared.genruntimeconfig.cache

@@ -1,0 +1,229 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "AltV.Net/1.31.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/AltV.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AltV.Net.dll": {}
+        }
+      },
+      "AltV.Net.Async/1.31.1": {
+        "type": "package",
+        "dependencies": {
+          "AltV.Net": "1.31.1",
+          "System.Threading.Channels": "4.7.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AltV.Net.Async.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AltV.Net.Async.dll": {}
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.Threading.Channels/4.7.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/System.Threading.Channels.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Threading.Channels.dll": {}
+        }
+      },
+      "SaltyShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/SaltyShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SaltyShared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AltV.Net/1.31.1": {
+      "sha512": "gmUsPsvKVm2HhCDFh+D74ei2KXkr5D2cBFtKjojL1YY5+xGIVJrO/uxeIHAJVTj4/O/H/kIFCIWVnavLI0SZIg==",
+      "type": "package",
+      "path": "altv.net/1.31.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "altv.net.1.31.1.nupkg.sha512",
+        "altv.net.nuspec",
+        "icon.png",
+        "lib/netcoreapp3.1/AltV.Net.dll",
+        "license.txt"
+      ]
+    },
+    "AltV.Net.Async/1.31.1": {
+      "sha512": "X32dKnaPM+ggk9nrEIQ9BIBaJfOS3jVW3AvGAqnrL6GuUaa4sY55vk+XtG0GrmODI+oXIpLUtVF7Bp0qrO4Glw==",
+      "type": "package",
+      "path": "altv.net.async/1.31.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "altv.net.async.1.31.1.nupkg.sha512",
+        "altv.net.async.nuspec",
+        "icon.png",
+        "lib/netcoreapp3.1/AltV.Net.Async.dll",
+        "license.txt"
+      ]
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "System.Threading.Channels/4.7.0": {
+      "sha512": "gdOOXBhtt2UpTxYJm1DRmoqNfYg5ypvhzhVt0vxKhzxXFjS81r8yIOSFsJYLRa1Jc14GBAqCnjxJstO3zBN7gg==",
+      "type": "package",
+      "path": "system.threading.channels/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.0/System.Threading.Channels.dll",
+        "lib/netcoreapp3.0/System.Threading.Channels.xml",
+        "lib/netstandard1.3/System.Threading.Channels.dll",
+        "lib/netstandard1.3/System.Threading.Channels.xml",
+        "lib/netstandard2.0/System.Threading.Channels.dll",
+        "lib/netstandard2.0/System.Threading.Channels.xml",
+        "system.threading.channels.4.7.0.nupkg.sha512",
+        "system.threading.channels.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "SaltyShared/1.0.0": {
+      "type": "project",
+      "path": "../SaltyShared/SaltyShared.csproj",
+      "msbuildProject": "../SaltyShared/SaltyShared.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "AltV.Net >= 1.31.1",
+      "AltV.Net.Async >= 1.31.1",
+      "Newtonsoft.Json >= 12.0.3",
+      "SaltyShared >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Marcus\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Marcus\\Desktop\\Gitlab\\SaltyChat-AltV\\SaltyServer\\SaltyServer.csproj",
+      "projectName": "SaltyServer",
+      "projectPath": "C:\\Users\\Marcus\\Desktop\\Gitlab\\SaltyChat-AltV\\SaltyServer\\SaltyServer.csproj",
+      "packagesPath": "C:\\Users\\Marcus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Marcus\\Desktop\\Gitlab\\SaltyChat-AltV\\SaltyServer\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Marcus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "C:\\Users\\Marcus\\Desktop\\Gitlab\\SaltyChat-AltV\\SaltyShared\\SaltyShared.csproj": {
+              "projectPath": "C:\\Users\\Marcus\\Desktop\\Gitlab\\SaltyChat-AltV\\SaltyShared\\SaltyShared.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "dependencies": {
+          "AltV.Net": {
+            "target": "Package",
+            "version": "[1.31.1, )"
+          },
+          "AltV.Net.Async": {
+            "target": "Package",
+            "version": "[1.31.1, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

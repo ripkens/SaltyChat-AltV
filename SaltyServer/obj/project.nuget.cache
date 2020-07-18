@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "OuDwT200laftH5rhHNQf6YTcYgbOhIB16iXIOh7v+ywXOo/VDrFE36PM4P37AdDirjJqp2ybIE2yMlaSe33Tzw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Marcus\\Desktop\\Gitlab\\SaltyChat-AltV\\SaltyServer\\SaltyServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Marcus\\.nuget\\packages\\altv.net\\1.31.1\\altv.net.1.31.1.nupkg.sha512",
+    "C:\\Users\\Marcus\\.nuget\\packages\\altv.net.async\\1.31.1\\altv.net.async.1.31.1.nupkg.sha512",
+    "C:\\Users\\Marcus\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Marcus\\.nuget\\packages\\system.threading.channels\\4.7.0\\system.threading.channels.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
