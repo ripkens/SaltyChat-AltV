@@ -7,7 +7,7 @@ Join our [Discord](https://discord.gg/MBCnqSf) and start with [Salty Chat](https
 
 # Installation
 
-- Add SaltyServer and SaltyShared as Projekts to your VS Solution
+- Add SaltyServer and SaltyShared as Projects to your VS Solution
 - Add NuGet Packages as needed
 - Copy SaltyClient to your resources folder, add it to your server.cfg and change resource.cfg to reflect the location of your output Folder.
 
