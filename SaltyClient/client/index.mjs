@@ -214,8 +214,8 @@ class VoiceManager {
         }
         else if (teamSpeakName == this.TeamSpeakName) {
             player = alt.Player.local;
-            alt.emitServer("Server:SaltyChat_IsTalking", this.voiceRange > 0 ? isTalking : false);
-            alt.emit("client:SaltyChat_IsTalking", this.voiceRange > 0 ? isTalking : false);
+            alt.emitServer("Server:SaltyChat_IsTalking", this.VoiceRange > 0 ? isTalking : false);
+            alt.emit("client:SaltyChat_IsTalking", this.VoiceRange > 0 ? isTalking : false);
         }
     }
     OnPlayerDied = (playerHandle) => {
