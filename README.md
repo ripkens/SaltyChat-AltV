@@ -6,6 +6,7 @@ You can report bugs or make sugguestions via issues, or contribute via pull requ
 Join our [Discord](https://discord.gg/MBCnqSf) and start with [Salty Chat](https://www.saltmine.de/)!
 
 # Current supported Plugin Version
+- ~~SaltyChat 1.3.3 Stable~~
 - SaltyChat 2.0.0 Stable
 - SaltyChat 2.0.1 Stable
 
