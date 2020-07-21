@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AltV.Net;
@@ -42,8 +42,9 @@ namespace SaltyServer
             this.ServerUniqueIdentifier = "";
             this.MinimumPluginVersion = "2.0.1";
             this.SoundPack = "default";
-            this.IngameChannel = "";
-            this.IngameChannelPassword = "1234";
+            this.IngameChannel = IngameChannel = "274";
+            this.IngameChannelPassword = IngameChannelPassword = "1234";
+            //string swissChannelIds = "";
             string swissChannelIds = "";
 
             if (!String.IsNullOrEmpty(swissChannelIds))
@@ -67,28 +68,25 @@ namespace SaltyServer
 
             lock (this._voiceClients)
             {
+                if (this._voiceClients.ContainsKey(client))
+                {
+                    this._voiceClients.Remove(client);
+                }
+
                 voiceClient = new VoiceClient(client, this.GetTeamSpeakName(), SaltyShared.SharedData.VoiceRanges[1]);
-
                 this._voiceClients.Add(client, voiceClient);
-            }
 
-            client.Emit(
-                SaltyShared.Event.SaltyChat_Initialize,
-                voiceClient.TeamSpeakName,
-                this.ServerUniqueIdentifier,
-                this.SoundPack,
-                this.IngameChannel,
-                this.IngameChannelPassword,
-                this.SwissChannels,
-                this.RadioTowers
-            );
+                client.Emit("hud:SetKeyValue", "voice", voiceClient.VoiceRange);
+                client.Emit("client::updateVoiceRange", voiceClient.VoiceRange);
 
-            foreach (VoiceClient cl in this.VoiceClients)
-            {
-                client.Emit(SaltyShared.Event.SaltyChat_UpdateClient, cl.Player.Id, cl.TeamSpeakName, cl.VoiceRange);
-                cl.Player.Emit(SaltyShared.Event.SaltyChat_UpdateClient, voiceClient.Player.Id, voiceClient.TeamSpeakName, voiceClient.VoiceRange);
+                client.Emit(SaltyShared.Event.SaltyChat_Initialize, voiceClient.TeamSpeakName, this.ServerUniqueIdentifier, this.SoundPack, this.IngameChannel, this.IngameChannelPassword, this.SwissChannels, this.RadioTowers);
+
+                foreach (VoiceClient cl in this.VoiceClients)
+                {
+                    client.Emit(SaltyShared.Event.SaltyChat_UpdateClient, cl.Player.Id, cl.TeamSpeakName, cl.VoiceRange);
+                    cl.Player.Emit(SaltyShared.Event.SaltyChat_UpdateClient, voiceClient.Player.Id, voiceClient.TeamSpeakName, voiceClient.VoiceRange);
+                }
             }
-            client.Emit("client::updateVoiceRange", voiceClient.VoiceRange);
         }
 
         [ScriptEvent(ScriptEventType.PlayerDisconnect)]
@@ -142,10 +140,12 @@ namespace SaltyServer
 
                 foreach (VoiceClient client in this.VoiceClients)
                 {
-                    client.Player.Emit(SaltyShared.Event.SaltyChat_SetVoiceRange, player.Id, voiceClient.VoiceRange);
+                    client.Player.Emit(SaltyShared.Event.SaltyChat_UpdateClient, player.Id, voiceClient.TeamSpeakName, voiceClient.VoiceRange);
                 }
             }
 
+
+            player.Emit("hud:SetKeyValue", "voice", voiceRange);
             player.Emit("client::updateVoiceRange", voiceRange);
         }
         #endregion
