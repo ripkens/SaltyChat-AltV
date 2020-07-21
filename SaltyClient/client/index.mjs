@@ -309,6 +309,7 @@ class VoiceManager {
         this.IsConnected = true;
         this.IsInGame = true;
         this.IsReady = true;
+        this.VoiceRange = this.VoiceRanges[1];
         this.Initiate();
     }
     OnPluginDisconnected = () => {
