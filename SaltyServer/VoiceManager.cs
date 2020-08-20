@@ -44,7 +44,7 @@ namespace SaltyServer
             this.MinimumPluginVersion = "2.0.1";
             this.SoundPack = "default";
             this.IngameChannel = IngameChannel = "yourchannelid";
-            this.IngameChannelPassword = IngameChannelPassword = "yourchannelpassword";
+            this.IngameChannelPassword = IngameChannelPassword = "yourpassword";
             //string swissChannelIds = "";
             string swissChannelIds = "";
 
