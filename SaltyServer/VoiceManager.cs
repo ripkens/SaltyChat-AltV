@@ -5,6 +5,7 @@ using AltV.Net;
 using AltV.Net.Elements.Entities;
 using System.Numerics;
 using AltV.Net.Data;
+using System.Globalization;
 
 namespace SaltyServer
 {
@@ -42,8 +43,8 @@ namespace SaltyServer
             this.ServerUniqueIdentifier = "";
             this.MinimumPluginVersion = "2.0.1";
             this.SoundPack = "default";
-            this.IngameChannel = IngameChannel = "274";
-            this.IngameChannelPassword = IngameChannelPassword = "1234";
+            this.IngameChannel = IngameChannel = "";
+            this.IngameChannelPassword = IngameChannelPassword = "";
             //string swissChannelIds = "";
             string swissChannelIds = "";
 
@@ -64,6 +65,7 @@ namespace SaltyServer
         [ServerEvent("PlayerLoggedIn")]
         public void OnPlayerConnected(IPlayer client)
         {
+            client.Emit("SaltyChat_OnConnected");
             VoiceClient voiceClient;
 
             lock (this._voiceClients)
@@ -129,14 +131,18 @@ namespace SaltyServer
         }
 
         [ClientEvent(SaltyShared.Event.SaltyChat_SetVoiceRange)]
-        public void OnSetVoiceRange(IPlayer player, float voiceRange)
+        public void OnSetVoiceRange(IPlayer player, string voiceRange)
         {
+            float cVoiceRange;
+            if (!float.TryParse(voiceRange, NumberStyles.Any, CultureInfo.InvariantCulture, out cVoiceRange))
+                return;
+
             if (!this.TryGetVoiceClient(player, out VoiceClient voiceClient))
                 return;
 
-            if (Array.IndexOf(SaltyShared.SharedData.VoiceRanges, voiceRange) >= 0)
+            if (Array.IndexOf(SaltyShared.SharedData.VoiceRanges, cVoiceRange) >= 0)
             {
-                voiceClient.VoiceRange = voiceRange;
+                voiceClient.VoiceRange = cVoiceRange;
 
                 foreach (VoiceClient client in this.VoiceClients)
                 {
@@ -145,8 +151,8 @@ namespace SaltyServer
             }
 
 
-            player.Emit("hud:SetKeyValue", "voice", voiceRange);
-            player.Emit("client::updateVoiceRange", voiceRange);
+            player.Emit("hud:SetKeyValue", "voice", cVoiceRange);
+            player.Emit("client::updateVoiceRange", cVoiceRange);
         }
         #endregion
 
@@ -173,24 +179,26 @@ namespace SaltyServer
         }
 #endif
         #endregion
-
         #region Remote Events (Radio)
         [ClientEvent(SaltyShared.Event.SaltyChat_IsSending)]
         public void OnSendingOnRadio(IPlayer player, string radioChannelName, bool isSending)
         {
             if (!this.TryGetVoiceClient(player, out VoiceClient voiceClient))
+            {
                 return;
+            }
 
             RadioChannel radioChannel = this.GetRadioChannel(radioChannelName, false);
 
             if (radioChannel == null || !radioChannel.IsMember(voiceClient))
+            {
                 return;
-
+            }
             radioChannel.Send(voiceClient, isSending);
         }
-        #endregion
+#endregion
 
-        #region Methods (Radio)
+#region Methods (Radio)
         public RadioChannel GetRadioChannel(string name, bool create)
         {
             RadioChannel radioChannel;
@@ -234,7 +242,7 @@ namespace SaltyServer
             radioChannel.AddMember(voiceClient);
         }
 
-        public void LeaveRadioChannel(IPlayer player)
+        public void LeaveRadioChannels(IPlayer player)
         {
             if (!this.TryGetVoiceClient(player, out VoiceClient voiceClient))
                 return;
@@ -339,9 +347,9 @@ namespace SaltyServer
 
             return true;
         }
-        #endregion
+#endregion
 
-        #region Helper
+#region Helper
         public bool TryGetVoiceClient(IPlayer client, out VoiceClient voiceClient)
         {
             lock (this._voiceClients)
@@ -353,6 +361,6 @@ namespace SaltyServer
             voiceClient = null;
             return false;
         }
-        #endregion
+#endregion
     }
 }
