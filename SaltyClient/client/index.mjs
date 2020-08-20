@@ -39,7 +39,6 @@ var PluginError;
 })(PluginError || (PluginError = {}));
 
 let webView = new alt.WebView('http://resource/client/saltychat/SaltyWebSocket.html');
-alt.log(webView);
 webView.unfocus();
 webView.isVisible = false;
 
@@ -271,14 +270,12 @@ class VoiceManager {
         if (radioChannel != null && radioChannel != "") {
             this.radioChannels.push(radioChannel);
             alt.emitServer("joinradio", radioChannel);
-            this.PlaySound("enterRadioChannel", false, "radio");
         }
     }
     OnLeaveRadioChannel = (radioChannel) => {
         if (radioChannel != null && radioChannel != "") {
             this.radioChannels = this.radioChannels.filter(x => x != radioChannel);
             alt.emitServer("leaveradio", radioChannel);
-            this.PlaySound("leaveRadioChannel", false, "radio");
         }
     }
     OnLeaveAllRadioChannels = async () => {
@@ -306,7 +303,6 @@ class VoiceManager {
         let relays = JSON.parse(relayJson);
         let player = playerHandle;
         if (this.radioChannels.indexOf(channel) !== -1) {
-            alt.log("Sendet2");
             if (player != alt.Player.local && this.VoiceClients.has(player)) {
                 let voiceClient = this.VoiceClients.get(player);
                 this.ExecuteCommand(new PluginCommand(isOnRadio ? Command.RadioCommunicationUpdate : Command.StopRadioCommunication, this.ServerUniqueIdentifier, new RadioCommunication(voiceClient.TeamSpeakName, 4, 4, false, true, false, relays)));
@@ -449,7 +445,6 @@ class VoiceManager {
         else
             newIndex = index + 1;
 
-        alt.log(`newIndex: ${newIndex}`);
         this.VoiceRange = this.VoiceRanges[newIndex];
         alt.log(`new VoiceRange: ${this.VoiceRange}`);
         this.PlayerStateUpdate();
