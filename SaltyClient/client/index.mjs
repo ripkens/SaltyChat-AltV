@@ -216,10 +216,6 @@ class VoiceManager {
             alt.emitServer("Server:SaltyChat_IsTalking", this.VoiceRange > 0 ? isTalking : false);
             alt.emit("client:SaltyChat_IsTalking", this.VoiceRange > 0 ? isTalking : false);
         }
-        if (isTalking)
-            native.playFacialAnim(player.scriptID, "mic_chatter", "mp_facial");
-        else
-            native.playFacialAnim(player.scriptID, "mood_normal_1", "facials@gen_male@variations@normal");
     }
     OnPlayerDied = (playerHandle) => {
         let playerId = parseInt(playerHandle);
