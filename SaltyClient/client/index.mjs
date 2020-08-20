@@ -39,7 +39,6 @@ var PluginError;
 })(PluginError || (PluginError = {}));
 
 let webView = new alt.WebView('http://resource/client/SaltyWebSocket.html');
-
 webView.unfocus();
 webView.isVisible = false;
 
@@ -217,9 +216,13 @@ class VoiceManager {
             alt.emitServer("Server:SaltyChat_IsTalking", this.VoiceRange > 0 ? isTalking : false);
             alt.emit("client:SaltyChat_IsTalking", this.VoiceRange > 0 ? isTalking : false);
         }
+        if (isTalking)
+            native.playFacialAnim(player.scriptID, "mic_chatter", "mp_facial");
+        else
+            native.playFacialAnim(player.scriptID, "mood_normal_1", "facials@gen_male@variations@normal");
     }
     OnPlayerDied = (playerHandle) => {
-        let playerId = parseInt(playerHandle.id);
+        let playerId = parseInt(playerHandle);
         if (this.VoiceClients.has(playerId)) {
             let voiceClient = this.VoiceClients.get(playerId);
             voiceClient.IsAlive = false;
@@ -227,7 +230,7 @@ class VoiceManager {
         }
     }
     OnPlayerRevived = (playerHandle) => {
-        let playerId = parseInt(playerHandle.id);
+        let playerId = parseInt(playerHandle);
         if (this.VoiceClients.has(playerId)) {
             let voiceClient = this.VoiceClients.get(playerId);
             voiceClient.IsAlive = true;
@@ -235,7 +238,7 @@ class VoiceManager {
         }
     }
     OnEstablishCall = (player) => {
-        let playerId = parseInt(player.id);
+        let playerId = parseInt(player);
         if (this.VoiceClients.has(playerId)) {
             let voiceClient = this.VoiceClients.get(playerId);
             let ownPosition = alt.Player.local.pos;
@@ -280,23 +283,21 @@ class VoiceManager {
         }
         this.radioChannels = [];
     }
-    OnPlayerIsSending = (playerHandle, channel, isOnRadio) => {
-        let playerId = parseInt(playerHandle.id);
-        let player = playerHandle;
-        if (this.radioChannels.indexOf(channel) !== -1) {
-            if (player.id != alt.Player.local.id && this.VoiceClients.has(playerId)) {
-                let voiceClient = this.VoiceClients.get(playerId);
+    OnPlayerIsSending = (playerHandle, isOnRadio, stateChanged) => {
+        let player = parseInt(playerHandle);
+        if (this.radioChannels !== -1) {
+            if (player != alt.Player.local.id && this.VoiceClients.has(player)) {
+                let voiceClient = this.VoiceClients.get(player);
                 this.ExecuteCommand(new PluginCommand(isOnRadio ? Command.RadioCommunicationUpdate : Command.StopRadioCommunication, this.ServerUniqueIdentifier, new RadioCommunication(voiceClient.TeamSpeakName, 4, 4, false, true, false, [])));
             }
         }
     }
     OnPlayerIsSendingRelayed = (playerHandle, channel, isOnRadio, relayJson) => {
-        let playerId = parseInt(playerHandle.id);
         let relays = JSON.parse(relayJson);
         let player = playerHandle;
         if (this.radioChannels.indexOf(channel) !== -1) {
-            if (player != alt.Player.local && this.VoiceClients.has(playerId)) {
-                let voiceClient = this.VoiceClients.get(playerId);
+            if (player != alt.Player.local && this.VoiceClients.has(player)) {
+                let voiceClient = this.VoiceClients.get(player);
                 this.ExecuteCommand(new PluginCommand(isOnRadio ? Command.RadioCommunicationUpdate : Command.StopRadioCommunication, this.ServerUniqueIdentifier, new RadioCommunication(voiceClient.TeamSpeakName, 4, 4, false, true, false, relays)));
             }
         }
@@ -428,7 +429,7 @@ class VoiceManager {
     }
     ToggleVoiceRange = () => {
         let index = this.VoiceRanges.indexOf(this.VoiceRange);
-        let newIndex = null
+        let newIndex = null;
         if (index < 0)
             newIndex = 1
         else if (index + 1 >= this.VoiceRanges.length)
@@ -438,7 +439,7 @@ class VoiceManager {
 
         this.VoiceRange = this.VoiceRanges[newIndex];
         this.PlayerStateUpdate();
-        alt.emitServer("SaltyChat_SetVoiceRange", this.VoiceRange);
+        alt.emitServer("SaltyChat_SetVoiceRange", this.VoiceRange.toString());
     }
     ExecuteCommand = (command) => {
         if (this.IsEnabled && this.IsConnected) {
