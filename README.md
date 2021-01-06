@@ -28,7 +28,7 @@ this.IngameChannel = IngameChannel = "x";
 this.IngameChannelPassword = IngameChannelPassword = "1234";
  ```
  
-- add ```client.Emit("SaltyChat_OnConnected");``` and  ```Alt.Emit("PlayerLoggedIn", client);``` to your player Spawn function to move the player into the Teamspeak-Channel for Ingame-Voice
+- add ```alt.emitClient(player, "SaltyChat_OnConnected");``` and  ```alt.emit("PlayerLoggedIn", player);``` to your player Spawn function to move the player into the Teamspeak-Channel for Ingame-Voice
  
 - The Server will Emit "client::updateVoiceRange" to the Player on VoiceRange change, you can react to it in your HUD for example.
 
@@ -44,4 +44,5 @@ This Repo uses Code extracted from the following authors:
 [WhishN v1.3.3](https://github.com/WhishN/)
 
 [SaltMineDE](https://github.com/saltminede)
+
 
